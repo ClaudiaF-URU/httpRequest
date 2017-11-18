@@ -76,7 +76,7 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Users\ImClaudiaF\Desktop\ionic\httpApp\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Peticiones a servidor\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-s4>\n        <ion-item>\n          <ion-label floating>Nombre</ion-label>\n          <ion-input [(ngModel)]="name" type="text"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col>\n        <button ion-button (click)="getRequest(name)">name</button>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col col-s2>\n        <ion-item>\n          <ion-label floating>a</ion-label>\n          <ion-input [(ngModel)]="a" type="number"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col col-s2>\n        <ion-item>\n          <ion-label floating>b</ion-label>\n          <ion-input [(ngModel)]="b" type="number"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="secondary" (click)="postRequest(a,b)">post</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <p>Get response: {{getResponse}}</p>\n  <p>Post response: {{postResponse}}</p>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\ImClaudiaF\Desktop\ionic\httpApp\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\ImClaudiaF\Desktop\ionic\httpRequest\httpApp\src\pages\home\home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Peticiones a servidor\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-s4>\n        <ion-item>\n          <ion-label floating>Nombre</ion-label>\n          <ion-input [(ngModel)]="name" type="text"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col>\n        <button ion-button (click)="getRequest(name)">name</button>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col col-s2>\n        <ion-item>\n          <ion-label floating>a</ion-label>\n          <ion-input [(ngModel)]="a" type="number"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col col-s2>\n        <ion-item>\n          <ion-label floating>b</ion-label>\n          <ion-input [(ngModel)]="b" type="number"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="secondary" (click)="postRequest(a,b)">post</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n\n  <p>Get response: {{getResponse}}</p>\n  <p>Post response: {{postResponse}}</p>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\ImClaudiaF\Desktop\ionic\httpRequest\httpApp\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_0__providers_request_request__["a" /* RequestProvider */]])
     ], HomePage);
@@ -115,7 +115,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RequestProvider = (function () {
     function RequestProvider(http) {
         this.http = http;
-        // console.log('Hello RequestProvider Provider');
+        this.ip = 'http://192.168.1.117:3000';
     }
     RequestProvider.prototype.test = function (num) {
         alert(num);
@@ -123,7 +123,7 @@ var RequestProvider = (function () {
     RequestProvider.prototype.get = function (name) {
         var _this = this;
         return new Promise(function (res, rej) {
-            _this.http.get("http://192.168.1.117:3000/hello/" + name, {}, {})
+            _this.http.get(_this.ip + "/hello/" + name, {}, {})
                 .then(function (data) {
                 if (data.status == 200) {
                     res(JSON.parse(data.data).hello);
@@ -137,7 +137,7 @@ var RequestProvider = (function () {
     RequestProvider.prototype.post = function (x, y) {
         var _this = this;
         return new Promise(function (res, rej) {
-            _this.http.post("http://192.168.1.117:3000/sum", { a: x, b: y }, {})
+            _this.http.post(_this.ip + "/sum", { a: x, b: y }, {})
                 .then(function (data) {
                 if (data.status == 200) {
                     res(JSON.parse(data.data).sum);
@@ -273,7 +273,7 @@ var MyApp = (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\ImClaudiaF\Desktop\ionic\httpApp\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\ImClaudiaF\Desktop\ionic\httpApp\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\ImClaudiaF\Desktop\ionic\httpRequest\httpApp\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\ImClaudiaF\Desktop\ionic\httpRequest\httpApp\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);

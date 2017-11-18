@@ -10,9 +10,11 @@ import { HTTP } from '@ionic-native/http';
 */
 @Injectable()
 export class RequestProvider {
-dataFromServe:any;
+  dataFromServe:any;
+  ip:string;
+
   constructor(public http: HTTP) {
-    // console.log('Hello RequestProvider Provider');
+    this.ip='http://192.168.1.117:3000';
   }
 
   test(num:number){
@@ -21,7 +23,7 @@ dataFromServe:any;
 
   get(name:string){
     return new Promise((res,rej)=>{
-      this.http.get(`http://192.168.1.117:3000/hello/${name}`, {}, {})
+      this.http.get(`${this.ip}/hello/${name}`, {}, {})
       .then(data => {
         if(data.status==200){
           res(JSON.parse(data.data).hello);
@@ -35,7 +37,7 @@ dataFromServe:any;
 
   post(x:number,y:number){
     return new Promise((res,rej)=>{
-      this.http.post(`http://192.168.1.117:3000/sum`,{a:x,b:y}, {})
+      this.http.post(`${this.ip}/sum`,{a:x,b:y}, {})
       .then(data => {
         if(data.status==200){ 
           res(JSON.parse(data.data).sum);
