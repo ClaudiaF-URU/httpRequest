@@ -1,0 +1,5 @@
+HelloWorldBackend/node_modules/*
+httpApp/node_modules/*
+httpApp/.vscode/*
+httpApp/platforms/*
+httpApp/plugins/*

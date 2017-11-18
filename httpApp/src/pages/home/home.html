@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Peticiones a servidor
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-s4>
+        <ion-item>
+          <ion-label floating>Nombre</ion-label>
+          <ion-input [(ngModel)]="name" type="text"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <button ion-button (click)="getRequest(name)">name</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-s2>
+        <ion-item>
+          <ion-label floating>a</ion-label>
+          <ion-input [(ngModel)]="a" type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col col-s2>
+        <ion-item>
+          <ion-label floating>b</ion-label>
+          <ion-input [(ngModel)]="b" type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="secondary" (click)="postRequest(a,b)">post</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <p>Get response: {{getResponse}}</p>
+  <p>Post response: {{postResponse}}</p>
+
+
+</ion-content>
